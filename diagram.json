@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "author": "Constantin Stamate",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-mega",
+      "id": "mega",
+      "top": 120,
+      "left": 460,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": -20,
+      "left": 30,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ds18b20",
+      "id": "temp",
+      "top": 20,
+      "left": 80,
+      "attrs": {
+        "temperature": "28"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pullup",
+      "top": 10,
+      "left": 210,
+      "attrs": {
+        "value": "4700"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot",
+      "top": 360,
+      "left": 80,
+      "attrs": {
+        "value": "512"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "up",
+      "top": 360,
+      "left": 270,
+      "attrs": {
+        "color": "green",
+        "label": "UP"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "down",
+      "top": 360,
+      "left": 360,
+      "attrs": {
+        "color": "red",
+        "label": "DOWN"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "heater",
+      "top": 40,
+      "left": 390,
+      "attrs": {
+        "color": "red",
+        "label": "HEATER OUTPUT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "ledres",
+      "top": 90,
+      "left": 370,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -40,
+      "left": 680,
+      "attrs": {
+        "pins": "i2c"
+      }
+    }
+  ],
+  "connections": [
+    [ "mega:5V", "bb1:bp.1", "red", [] ],
+    [ "mega:GND.1", "bb1:bn.1", "black", [] ],
+    [ "mega:8", "temp:DQ", "green", [] ],
+    [ "mega:5V", "temp:VCC", "red", [] ],
+    [ "mega:GND.1", "temp:GND", "black", [] ],
+    [ "temp:DQ", "pullup:1", "green", [] ],
+    [ "mega:5V", "pullup:2", "red", [] ],
+    [ "mega:A0", "pot:SIG", "orange", [] ],
+    [ "mega:5V", "pot:VCC", "red", [] ],
+    [ "mega:GND.1", "pot:GND", "black", [] ],
+    [ "mega:4", "up:1.l", "green", [] ],
+    [ "mega:GND.1", "up:2.l", "black", [] ],
+    [ "mega:5", "down:1.l", "green", [] ],
+    [ "mega:GND.1", "down:2.l", "black", [] ],
+    [ "mega:10", "heater:A", "green", [] ],
+    [ "heater:C", "ledres:1", "green", [] ],
+    [ "ledres:2", "mega:GND.1", "black", [] ],
+    [ "mega:20", "lcd:SDA", "blue", [] ],
+    [ "mega:21", "lcd:SCL", "yellow", [] ],
+    [ "mega:5V", "lcd:VCC", "red", [] ],
+    [ "mega:GND.1", "lcd:GND", "black", [] ]
+  ],
+  "dependencies": {}
+}
